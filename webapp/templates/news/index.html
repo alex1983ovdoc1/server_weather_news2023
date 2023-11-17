@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class='row'>
+        <div class='col-10'>
+
+            {% include('messages.html') %}
+            
+            <h2>_News_</h2>
+            {%for news in news_list:%}
+                <h3><a href="{{ url_for('news.single_news', news_id=news.id) }}">{{news.title}}</a></h3> 
+       
+                <p>{{ news.published.strftime('%d.%m.%Y') }} | Comments: {{ news.comments_count()}}</p>
+                <hr/>
+            {%endfor%}
+        </div>
+        
+        <div class='col-2'>
+            <h2>_Forecast_</h2>
+            (webapp/templates/index.html)<br><br>
+            
+            {% if weather %}
+                <!-- {{ weather }} -->
+                Temperature: {{ weather.temp_C }} (°C),<br>
+                FeelsLike  : {{ weather.FeelsLikeC }} (°C)
+            {% else %}
+                - Service error (webapp/templates/index.html) -
+            {% endif %}
+            
+        </div>
+    </div>
+{% endblock %}
