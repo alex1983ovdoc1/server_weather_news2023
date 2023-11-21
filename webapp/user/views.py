@@ -1,14 +1,15 @@
 from flask import Blueprint, render_template, flash, redirect, url_for
 from flask_login import login_user, logout_user, current_user
 
-# from webapp.db import db
-# from webapp.user.forms import LoginForm, RegistrationForm
-# from webapp.user.models import User
-# from webapp.utils import get_redirect_target
-from db import db
-from user.forms import LoginForm, RegistrationForm
-from user.models import User
-from utils import get_redirect_target
+from webapp.db import db
+from webapp.user.forms import LoginForm, RegistrationForm
+from webapp.user.models import User
+from webapp.utils import get_redirect_target
+
+# from db import db
+# from user.forms import LoginForm, RegistrationForm
+# from user.models import User
+# from utils import get_redirect_target
 
 
 blueprint = Blueprint('user', __name__, url_prefix='/users')

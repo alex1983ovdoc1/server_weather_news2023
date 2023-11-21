@@ -1,15 +1,15 @@
 from flask import Blueprint, redirect, flash, render_template
 from flask_login import current_user, login_required
 
-# from webapp.user.decorators import admin_required
-# from webapp.user.forms import LoginForm
-# from webapp.user.models import User
-# from webapp.utils import get_redirect_target
+from webapp.user.decorators import admin_required
+from webapp.user.forms import LoginForm
+from webapp.user.models import User
+from webapp.utils import get_redirect_target
 
-from user.decorators import admin_required
-from user.forms import LoginForm
-from user.models import User
-from utils import get_redirect_target
+# from user.decorators import admin_required
+# from user.forms import LoginForm
+# from user.models import User
+# from utils import get_redirect_target
 
 blueprint = Blueprint('admin', __name__, url_prefix='/admin')
 

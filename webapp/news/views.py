@@ -1,16 +1,17 @@
 from flask import abort, Blueprint, current_app, flash, render_template, redirect, request, url_for
 from flask_login import current_user, login_required
 
-# from webapp.db import db
-# from webapp.news.forms_commit import CommentForm
-# from webapp.news.models import Comment, News
-# from webapp.weather_html import weather_by_city 
-# from webapp.utils import get_redirect_target
-from db import db
-from news.forms_commit import CommentForm
-from news.models import Comment, News
-from weather_html import weather_by_city 
-from utils import get_redirect_target
+from webapp.db import db
+from webapp.news.forms_commit import CommentForm
+from webapp.news.models import Comment, News
+from webapp.weather_html import weather_by_city 
+from webapp.utils import get_redirect_target
+
+# from db import db
+# from news.forms_commit import CommentForm
+# from news.models import Comment, News
+# from weather_html import weather_by_city 
+# from utils import get_redirect_target
 
 
 blueprint = Blueprint('news', __name__)
