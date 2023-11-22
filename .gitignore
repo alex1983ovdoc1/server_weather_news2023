@@ -1,5 +1,7 @@
 .vs/
 __pycache__/
+Deploy/.ssh/
+Deploy/.ssh/*
 temp/
 env/
 requirementsOLD.txt
