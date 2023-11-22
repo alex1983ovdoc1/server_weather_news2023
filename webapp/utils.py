@@ -8,15 +8,24 @@ def is_safe_url(target):
 	test_url = urlparse(urljoin(request.host_url, target))
 	return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
 
+# ref_url = urlparse(request.host_url)
+# print(ref_url)
 # examenation url have 'next', referrer
 def get_redirect_target():
 	for target in request.values.get('next'), request.referrer:
 		if not target:
 			continue
 		if is_safe_url(target):	
+			list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?']
 			
-			list_url = ['http://127.0.0.1:5000/users/login', 'http://127.0.0.1:5000/users/login?next=/users/register?', 'http://127.0.0.1:5000/admin', 'http://127.0.0.1:5000/admin/?next=/?']		
+			referrer = request.referrer
+			parsed_url = urlparse(referrer)
+			previous_part = f"{parsed_url.scheme}://{parsed_url.netloc}"
+
 			if target in list_url:
-				target = 'http://127.0.0.1:5000/'				 
+				# target = f'http://127.0.0.1:5000/'	
+				referrer = request.referrer
+				parsed_url = urlparse(referrer)
+				target = f"{parsed_url.scheme}://{parsed_url.netloc}"		
 
 			return target
