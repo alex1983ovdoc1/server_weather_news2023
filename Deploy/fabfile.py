@@ -22,10 +22,14 @@ def test():
         local("date")
 
 def update():
-	with settings(sudo_prompt="Password:", warn_only=True):
-		cd("/home/bondar1983ovdoc1/server_weather_news2023")
+	with cd("/home/bondar1983ovdoc1/server_weather_news2023"):		
 		run("git pull")
 		sudo("supervisorctl restart flask")
+
+	# with settings(sudo_prompt="Password:", warn_only=True):
+	# 	cd("/home/bondar1983ovdoc1/server_weather_news2023")
+	# 	run("git pull")
+	# 	sudo("supervisorctl restart flask")
 
 
 
