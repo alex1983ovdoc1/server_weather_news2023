@@ -41,7 +41,8 @@ def process_login():
             return redirect(get_redirect_target())
 
     flash('/ Name or password not correct / (user/views)')
-    return redirect(url_for('user.login'))
+    # return redirect(url_for('user.login'))
+    return redirect(get_redirect_target())
 
     
 
