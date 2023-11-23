@@ -20,7 +20,7 @@ def get_redirect_target():
 			continue
 		if is_safe_url(target):	
 
-			list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?', '/?']
+			list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?', '/?', None]
 			
 			referrer = request.referrer
 			parsed_url = urlparse(referrer)
