@@ -16,7 +16,10 @@ def get_redirect_target():
 
 	for target in request.values.get('next'), request.referrer:
 		if 'None' in str(target):
-				print('000')
+				referrer = request.referrer
+				parsed_url = urlparse(referrer)
+				target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
+				
 		if not target:
 			continue
 		if is_safe_url(target):	
@@ -27,19 +30,12 @@ def get_redirect_target():
 			parsed_url = urlparse(referrer)
 			previous_part = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
-			print(target)
-			print('123')
-			print(previous_part)
 
 			if target in list_url:
 				# target = f'http://127.0.0.1:5000/'	
 				referrer = request.referrer
 				parsed_url = urlparse(referrer)
-				print(parsed_url)
-				target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
-			elif 'None' in str(target):
-				print('256')
-
+				target = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
 
 			return target
