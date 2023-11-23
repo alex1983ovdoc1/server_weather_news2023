@@ -68,11 +68,10 @@ def get_redirect_target():
 
 		if not target:
 			continue
-		if is_safe_url(target):	
-			list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?', '/?', 'None', '/users/None']
-
-			if target in list_url:
-				target = f"{parsed_url.scheme}://{parsed_url.netloc}"
+		# if is_safe_url(target):	
+		# 	list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?', '/?', 'None', '/users/None']
+		# 	if target in list_url:
+		# 		target = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
 		print(target)
 
