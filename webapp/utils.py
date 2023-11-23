@@ -64,6 +64,8 @@ def get_redirect_target():
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}/{str(parsed_url.query).replace('next=', '')}"
 			else:
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}/{parsed_url.query}"
+		elif '%' in str(target):
+			target = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
 
 		if not target:
