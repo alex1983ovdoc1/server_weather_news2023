@@ -15,27 +15,35 @@ def is_safe_url(target):
 def get_redirect_target():
 
 	for target in request.values.get('next'), request.referrer:
-		if 'None' in str(target):
-				referrer = request.referrer
-				parsed_url = urlparse(referrer)
-				target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
-				break
+
+		referrer = request.referrer
+		parsed_url = urlparse(referrer)
+		# print(parsed_url)
+
+		if 'None' in str(target) and target is not None or parsed_url.path=='/users/login':
+			target = f"{parsed_url.scheme}://{parsed_url.netloc}/{str(parsed_url.query).replace('next=', '')}"	
+
+
+		if target is None:
+			target = f"{parsed_url.scheme}://{parsed_url.netloc}/{parsed_url.path}"	
+
+		if  'next' in str(parsed_url.query):
+			target = f"{parsed_url.scheme}://{parsed_url.netloc}/{str(parsed_url.query).replace('next=', '')}"
+
+		if '/users/register' in target:
+			target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
+
+		# print(target)
 
 		if not target:
 			continue
 		if is_safe_url(target):	
-
 			list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?', '/?', 'None', '/users/None']
-			
-			referrer = request.referrer
-			parsed_url = urlparse(referrer)
-			previous_part = f"{parsed_url.scheme}://{parsed_url.netloc}"
-
 
 			if target in list_url:
 				# target = f'http://127.0.0.1:5000/'	
-				referrer = request.referrer
-				parsed_url = urlparse(referrer)
+				# referrer = request.referrer
+				# parsed_url = urlparse(referrer)
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
 
