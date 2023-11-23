@@ -19,7 +19,8 @@ def get_redirect_target():
 				referrer = request.referrer
 				parsed_url = urlparse(referrer)
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
-				
+				break
+
 		if not target:
 			continue
 		if is_safe_url(target):	
@@ -38,4 +39,4 @@ def get_redirect_target():
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
 
-			return target
+	return target
