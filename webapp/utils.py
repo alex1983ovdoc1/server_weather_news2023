@@ -50,15 +50,15 @@ def get_redirect_target():
 			else:
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}/{parsed_url.query}"
 		
-		if target is None:
+		elif target is None:
 			print('222')
 			target = f"{parsed_url.scheme}://{parsed_url.netloc}/{parsed_url.path}"
 
-		if 'login' in str(target) and 'news' not in str(target):
+		elif 'login' in str(target) and 'news' not in str(target):
 			print('333')
 			target = f"{parsed_url.scheme}://{parsed_url.netloc}"
 		
-		if 'login' in str(target) and 'news' in str(target):
+		elif 'login' in str(target) and 'news' in str(target):
 			print('444')
 			if 'next' in str(parsed_url.query): 				
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}/{str(parsed_url.query).replace('next=', '')}"
