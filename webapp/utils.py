@@ -15,7 +15,7 @@ def is_safe_url(target):
 def get_redirect_target():
 
 	for target in request.values.get('next'), request.referrer:
-		if 'None' in target:
+		if 'None' in str(target):
 				print('000')
 		if not target:
 			continue
@@ -37,7 +37,7 @@ def get_redirect_target():
 				parsed_url = urlparse(referrer)
 				print(parsed_url)
 				target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
-			elif 'None' in target:
+			elif 'None' in str(target):
 				print('256')
 
 
