@@ -24,7 +24,8 @@ def index():
     #weather = weather_by_city('Kyiv,Ukraine')
     weather = weather_by_city(current_app.config['WEATHER_DEFAULT_CITY'])           # go function weather
     news_list = News.query.filter(News.text.isnot(None)).order_by(News.published.desc()).all()                                         # go function news
-    return render_template('news/index.html', page_title=title, weather = weather, news_list=news_list) # send to site
+    city_name = current_app.config['WEATHER_DEFAULT_CITY']
+    return render_template('news/index.html', page_title=title, weather = weather, city_name = city_name, news_list=news_list) # send to site
 
 
 # text new's from DB to my site

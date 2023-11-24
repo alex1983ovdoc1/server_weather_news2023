@@ -15,32 +15,10 @@ def is_safe_url(target):
 def get_redirect_target():
 
 	for target in request.values.get('next'), request.referrer:
-		print(type(target))
-		print(target)
 
 		referrer = request.referrer
 		parsed_url = urlparse(referrer)
-		print(parsed_url)
-
-		# if 'None' in str(target) and target is not None:
-
-		# 	print('1111')
-		# 	# target = f"{parsed_url.scheme}://{parsed_url.netloc}"	
-		# 	target = f"{parsed_url.scheme}://{parsed_url.netloc}/{str(parsed_url.query).replace('next=', '')}"	
-		# 	# break
-
-		# if target is None:
-		# 	target = f"{parsed_url.scheme}://{parsed_url.netloc}/{parsed_url.path}"	
-		# 	print('222')
-		# 	# break
-
-		# if  'next' in str(parsed_url.query):
-		# 	print('333')
-		# 	target = f"{parsed_url.scheme}://{parsed_url.netloc}/{str(parsed_url.query).replace('next=', '')}"
-
-		# if '/users/register' in target:   or parsed_url.path=='/users/login'
-		# 	target = f"{parsed_url.scheme}://{parsed_url.netloc}"
-		# 	print('444')	
+	
 
 		if 'None' in str(target) and target is not None:
 			# print('1111')
@@ -70,11 +48,5 @@ def get_redirect_target():
 
 		if not target:
 			continue
-		# if is_safe_url(target):	
-		# 	list_url = ['/users/login', '/users/login?next=/users/register?', '/admin', '/admin/?next=/?', '/?', 'None', '/users/None']
-		# 	if target in list_url:
-		# 		target = f"{parsed_url.scheme}://{parsed_url.netloc}"
-
-		# print(target)
 
 	return target
