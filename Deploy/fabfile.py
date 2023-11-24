@@ -17,8 +17,8 @@ vm_ip = "34.127.103.238"
 env.hosts = [vm_ip]
 env.user = "bondar1983ovdoc1"
 # env.key_filename = "C:/.ssh/id_rsa"
-env.reject_unknown_hosts = False
-env.disable_known_hosts = True
+# env.reject_unknown_hosts = False
+# env.disable_known_hosts = True
 
 def test():
     with settings(connect_kwargs={"key_filename": "C:/.ssh/id_rsa"}, warn_only=True):
@@ -27,7 +27,7 @@ def test():
 
 def update():
 	with cd("/home/bondar1983ovdoc1/server_weather_news2023"):		
-		# run("git stash")
+		run("git stash")
 		run("git pull")
 		sudo("supervisorctl restart flask")
 
