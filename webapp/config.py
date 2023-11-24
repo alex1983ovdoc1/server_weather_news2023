@@ -13,7 +13,7 @@ LON_CITY = -120.740135
 WEATHER_API_KEY = '05966ac74347d94fb6dcd48d722b66eb'		 # from https://openweathermap.org/
 WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
-
+SECRET_KEY = "szdgdfhgfjghkfhgkeaf$wer"
 
 REMEMBER_COOKIE_DURATION = timedelta(days=150) # remember users days=5
 
