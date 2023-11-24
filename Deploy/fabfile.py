@@ -27,7 +27,7 @@ def test():
 
 def update():
 	with cd("/home/bondar1983ovdoc1/server_weather_news2023"):		
-		run("git stash")
+		# run("git stash")
 		run("git pull")
 		sudo("supervisorctl restart flask")
 
