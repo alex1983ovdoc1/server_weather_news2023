@@ -29,22 +29,21 @@ def login():
 
 # processing login
 @blueprint.route('/process-login', methods=['POST'])
+# @blueprint.route('/process-login')
 def process_login():
     form = LoginForm()
 
     if form.validate_on_submit():
+        print('0000.000')
         user = User.query.filter(User.username == form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             flash('/ You going in site! / (user/views)')
             # return redirect(url_for('news.index'))
             return redirect(get_redirect_target())
-
-    flash('/ Name or password not correct / (user/views)')
-    # return redirect(url_for('user.login'))
-    return redirect(url_for('user.login.html'))
-    # return redirect(get_redirect_target())
-
+        else:
+            flash('/ Name or password not correct / (user/views)')
+            return redirect(url_for('user.login'))
     
 
 # user logout
