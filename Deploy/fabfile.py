@@ -12,7 +12,7 @@
 
 from fabric.api import env, settings, run, local, cd, sudo
 
-vm_ip = "34.83.3.154"
+vm_ip = "34.127.103.238"
 
 env.hosts = [vm_ip]
 env.user = "bondar1983ovdoc1"

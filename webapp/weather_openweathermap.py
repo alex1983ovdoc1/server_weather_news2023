@@ -4,6 +4,7 @@ import requests
 print
 
 def weather_by_city(city_name):
+	hello
 	lat=37.983810
 	lon=23.727539
 	params1 = {
