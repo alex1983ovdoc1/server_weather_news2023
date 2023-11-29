@@ -6,33 +6,35 @@
 
             {% include('messages.html') %}
             
-            <h2>_News_</h2>
+            <!-- <h2>_News_</h2> -->
             {%for news in news_list:%}
-                <h3><a href="{{ url_for('news.single_news', news_id=news.id) }}">{{news.title}}</a></h3> 
+                <h4><a href="{{ url_for('news.single_news', news_id=news.id) }}">{{news.title}}</a></h4> 
        
                 <p>{{ news.published.strftime('%d.%m.%Y') }} | Comments: {{ news.comments_count()}}</p>
                 <hr/>
             {%endfor%}
         </div>
         
-        <div class='col-2'>
-            <h2>Forecast
-                <h3>{% if city_name %}
+       <!--  <div class='col-2'>
+            <h6>Forecast
+                {% if city_name %}
                     {{ city_name }}:
                 {% else %}
-                    - Service error (webapp/templates/index.html) -
+                    - Service error -
                 {% endif %}
-                </h3>
-            </h2>
-            <br>            
-            
+            </h6>
+
             {% if weather %}
-                Temperature: {{ weather.temp_C }} (°C),<br>
+                Temperature: {{ weather.temp_C }} (°C)<br>
                 Feels Like : {{ weather.FeelsLikeC }} (°C)
             {% else %}
-                - Service error (webapp/templates/index.html) -
-            {% endif %}
-            
+                - Service error -
+            {% endif %}            
+        </div> -->
+
+        <div class='col-2'>
+            {% include('weather.html') %}
         </div>
+        
     </div>
 {% endblock %}

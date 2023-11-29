@@ -1,6 +1,9 @@
-from webapp import create_app
+import os
 
-app = create_app()
+
+def run_celery_beat():
+    os.system('celery -A tasks beat')
+
 
 if __name__ == '__main__':
-    app.run()
+    run_celery_beat()

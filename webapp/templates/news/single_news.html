@@ -8,7 +8,7 @@
             {{ news.text|safe }}
 
             {% if news.comments %}
-                <h3>Comments__:</h3>
+                <h3>Comments:</h3>
                 {% for comment in news.comments %}
                 <div class="card">
                     <div class="card-body">
@@ -38,16 +38,39 @@
            
             {% else %}
                 <p>
-                    <a href="{{ url_for('user.login', next=request.full_path)}}">Log in</a>  to add comment
+                    <br>
+                    <h4><a href="{{ url_for('user.login', next=request.full_path)}}"><em><strong>Log in</strong></em></a>  <em><strong>to add a comment to the news. </strong></em></h4>
+                    <br><br>
                 </p>
            {% endif %}
                                      
 
         </div>
           
-        <div class='col-2'>
-            <h2>Other news</h2>
+        <!-- <div class='col-2'>
+            <h5>Other news:</h5>
             
+        </div> -->
+        <!-- <div class='col-2'>
+            <h6>Forecast
+                {% if city_name %}
+                    {{ city_name }}:
+                {% else %}
+                    - Service error -
+                {% endif %}
+            </h6>
+
+            {% if weather %}
+                Temperature: {{ weather.temp_C }} (°C)<br>
+                Feels Like : {{ weather.FeelsLikeC }} (°C)
+            {% else %}
+                - Service error -
+            {% endif %}            
+        </div> -->
+        
+        <div class='col-2'>
+            {% include('weather.html') %}
         </div>
+
     </div>
 {% endblock %}

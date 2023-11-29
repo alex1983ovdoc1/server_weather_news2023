@@ -7,12 +7,6 @@ from webapp.news.models import Comment, News
 from webapp.weather_html import weather_by_city 
 from webapp.utils import get_redirect_target
 
-# from db import db
-# from news.forms_commit import CommentForm
-# from news.models import Comment, News
-# from weather_html import weather_by_city 
-# from utils import get_redirect_target
-
 
 blueprint = Blueprint('news', __name__)
 
@@ -20,8 +14,7 @@ blueprint = Blueprint('news', __name__)
 # @app.route('/')                                                 # start flask's object -> app
 @blueprint.route('/') 
 def index():
-    title = "News Python"                                       # name title
-    #weather = weather_by_city('Kyiv,Ukraine')
+    title = current_app.config['PAGE_TITLE']
     weather = weather_by_city(current_app.config['WEATHER_DEFAULT_CITY'])           # go function weather
     news_list = News.query.filter(News.text.isnot(None)).order_by(News.published.desc()).all()                                         # go function news
     city_name = current_app.config['WEATHER_DEFAULT_CITY']
@@ -36,8 +29,11 @@ def single_news(news_id):
     if not my_news:
         abort(404)
     comment_form = CommentForm(news_id=my_news.id)
+
+    weather = weather_by_city(current_app.config['WEATHER_DEFAULT_CITY'])
+    city_name = current_app.config['WEATHER_DEFAULT_CITY']
     # print(comment_form.news_id)
-    return render_template('news/single_news.html', page_title=my_news.title, news=my_news, comment_form=comment_form)
+    return render_template('news/single_news.html', page_title=my_news.title, news=my_news, comment_form=comment_form, weather = weather, city_name = city_name)
 
 
 # page for comments
@@ -58,5 +54,4 @@ def add_comment():
                     getattr(form, field).label.text, 
                     error
                     ))
-    # return redirect(request.referrer)
     return redirect(get_redirect_target())

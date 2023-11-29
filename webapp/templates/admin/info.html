@@ -8,7 +8,7 @@
             {% include('messages.html') %}
 
 
-            <h2>_Users_</h2>
+            <h2>Users in the database:</h2>
             <ol>
             {%for n_users in name_user:%}
             <h6><li>
@@ -18,6 +18,12 @@
                       
             {%endfor%}
             </ol>
+
+            <h3>Number of news in the database:</h3>
+            {%if news_count %}
+                Quantity is equal: {{ news_count }}
+            {% endif %}
+            
 
 
         </div>

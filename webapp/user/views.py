@@ -6,21 +6,15 @@ from webapp.user.forms import LoginForm, RegistrationForm
 from webapp.user.models import User
 from webapp.utils import get_redirect_target
 
-# from db import db
-# from user.forms import LoginForm, RegistrationForm
-# from user.models import User
-# from utils import get_redirect_target
-
 
 blueprint = Blueprint('user', __name__, url_prefix='/users')
 
 
 # user's form
-# @app.route('/login')
 @blueprint.route('/login')
 def login():
-    if current_user.is_authenticated:           # if user authenticated
-        # return redirect(url_for('news.index'))       # go start page
+    if current_user.is_authenticated:                   # if user authenticated
+        # return redirect(url_for('news.index'))        # go start page
         return redirect(get_redirect_target())
     title = 'Authorization'
     login_form = LoginForm()
@@ -34,15 +28,16 @@ def process_login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        print('0000.000')
         user = User.query.filter(User.username == form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            flash('/ You going in site! / (user/views)')
+            flash('You are visiting the site!!')
             # return redirect(url_for('news.index'))
             return redirect(get_redirect_target())
         else:
-            flash('/ Name or password not correct / (user/views)')
+            flash('Name or password not correct.')
+            flash('(Caps Lock may be on)')
+
             return redirect(url_for('user.login'))
     
 
@@ -50,7 +45,7 @@ def process_login():
 @blueprint.route('/logout')
 def logout():
     logout_user()
-    flash('/ You logout from site. / (user/views)')
+    flash('You are leaving the site.')
     # return redirect(url_for('news.index'))
     return redirect(get_redirect_target())
 
@@ -63,7 +58,7 @@ def register():
         # return redirect(url_for('news.index'))
         return redirect(get_redirect_target())
     form = RegistrationForm()
-    title = 'Registration (user/views.py)'
+    title = 'Registration'
     return render_template('user/registration.html', page_title=title, form=form)
 
 
@@ -76,7 +71,7 @@ def process_reg():
         new_user.set_password(form.password.data)
         db.session.add(new_user)
         db.session.commit()
-        flash('You registered!!! (user/views.py)')
+        flash('You have registered!')
         return redirect(url_for('user.login'))
         
     else:

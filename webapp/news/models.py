@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy.orm import relationship
 
 from webapp.db import db
-# from db import db
+
 
 
 class News(db.Model):                                       # class News inheritans with .Model (DB SQLite)

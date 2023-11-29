@@ -1,0 +1,48 @@
+ 
+ -------------- celery@HOME-PC v5.2.7 (dawn-chorus)
+--- ***** ----- 
+-- ******* ---- Windows-10-10.0.25300-SP0 2023-11-29 16:33:36
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x1230c21b430
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     disabled://
+- *** --- * --- .> concurrency: 4 (solo)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.getnews_content
+  . tasks.getnews_snippets
+
+[2023-11-29 16:33:36,208: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2023-11-29 16:33:36,210: INFO/MainProcess] mingle: searching for neighbors
+[2023-11-29 16:33:37,236: INFO/MainProcess] mingle: all alone
+[2023-11-29 16:33:37,253: INFO/MainProcess] celery@HOME-PC ready.
+[2023-11-29 16:35:00,040: INFO/MainProcess] Task tasks.getnews_snippets[4d1e3536-9173-4628-8e04-d856e1f18501] received
+[2023-11-29 16:35:01,232: WARNING/MainProcess] 10
+[2023-11-29 16:35:01,492: INFO/MainProcess] Task tasks.getnews_snippets[4d1e3536-9173-4628-8e04-d856e1f18501] succeeded in 1.4530000000013388s: None
+[2023-11-29 16:35:01,492: INFO/MainProcess] Task tasks.getnews_content[1e54a423-19cf-4df5-ace8-fbfea06425ac] received
+[2023-11-29 16:35:02,152: INFO/MainProcess] Task tasks.getnews_content[1e54a423-19cf-4df5-ace8-fbfea06425ac] succeeded in 0.6559999999990396s: None
+[2023-11-29 16:40:00,000: INFO/MainProcess] Task tasks.getnews_content[ff7a2744-87dd-41c1-aceb-2201c9d72ea8] received
+[2023-11-29 16:40:00,000: INFO/MainProcess] Task tasks.getnews_content[ff7a2744-87dd-41c1-aceb-2201c9d72ea8] succeeded in 0.0s: None
+[2023-11-29 16:40:00,009: INFO/MainProcess] Task tasks.getnews_snippets[a3f072f3-4326-42eb-8d83-02c0c4d2ce7f] received
+[2023-11-29 16:40:01,090: WARNING/MainProcess] 10
+[2023-11-29 16:40:01,102: INFO/MainProcess] Task tasks.getnews_snippets[a3f072f3-4326-42eb-8d83-02c0c4d2ce7f] succeeded in 1.0930000000007567s: None
+[2023-11-29 16:45:00,002: INFO/MainProcess] Task tasks.getnews_content[bfef5825-069a-4389-90b9-9d741c77316f] received
+[2023-11-29 16:45:00,002: INFO/MainProcess] Task tasks.getnews_content[bfef5825-069a-4389-90b9-9d741c77316f] succeeded in 0.0s: None
+[2023-11-29 16:45:00,010: INFO/MainProcess] Task tasks.getnews_snippets[628b0f2d-0f50-4b17-8b17-9d1e4fa905d1] received
+[2023-11-29 16:45:01,132: WARNING/MainProcess] 10
+[2023-11-29 16:45:01,152: INFO/MainProcess] Task tasks.getnews_snippets[628b0f2d-0f50-4b17-8b17-9d1e4fa905d1] succeeded in 1.139999999999418s: None
+[2023-11-29 16:50:00,012: INFO/MainProcess] Task tasks.getnews_content[4de59d69-7d81-4bd4-a29a-41f5c0eb26fd] received
+[2023-11-29 16:50:00,020: INFO/MainProcess] Task tasks.getnews_content[4de59d69-7d81-4bd4-a29a-41f5c0eb26fd] succeeded in 0.014999999999417923s: None
+[2023-11-29 16:50:00,020: INFO/MainProcess] Task tasks.getnews_snippets[0bf26391-9dfa-4743-85fe-c631d71e1639] received
+[2023-11-29 16:50:01,080: WARNING/MainProcess] 10
+[2023-11-29 16:50:01,095: INFO/MainProcess] Task tasks.getnews_snippets[0bf26391-9dfa-4743-85fe-c631d71e1639] succeeded in 1.0630000000019209s: None
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)

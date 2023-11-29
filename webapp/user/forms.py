@@ -3,7 +3,6 @@ from wtforms import BooleanField, StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from webapp.user.models import User
-# from user.models import User
 
 
 class LoginForm(FlaskForm):
